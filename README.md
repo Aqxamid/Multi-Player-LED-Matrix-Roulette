@@ -14,22 +14,21 @@ The application is built on a state-machine architecture that manages player reg
 
 * **Microcontroller:** Arduino Uno R3
 * **Display:** 16x2 LCD with I2C Interface Driver (Address: `0x27`)
-* **LED Interface:** 8x8 LED Matrix (Driven directly via GPIO, no external driver)
+* **LED Interface:** 8x8 LED Matrix (Driven directly via GPIO)
 * **Input:** 4x4 Matrix Keypad
-* **Audio:** Passive Buzzer (PWM-controlled for custom frequency melodies)
+* **Audio:** Passive Buzzer (PWM-controlled)
+* **Resistors:** 4x 220Ω (Required for Matrix Rows current limiting)
 * **Interconnects:** Male-to-Male, Female-to-Male, and Female-to-Female jumper wires
 
 ### Pin Mapping
 
-| Component | Connection/Pin | Details |
+| Component | Arduino Pins | Details |
 | --- | --- | --- |
-| **Microcontroller** | Arduino Uno R3 | Core Processor |
-| **LCD Display** | I2C (SDA/SCL) | Uses A4/A5 on Uno R3 |
-| **Keypad** | Rows: 11, 12, 13, A0 | 4x4 Matrix Scanning |
-|  | Cols: A1, A2, A3, 1 |  |
-| **LED Matrix** | Rows: 2, 3, 4, 5 | Direct Multiplexed Output |
-|  | Cols: 6, 7, 8, 9 |  |
-| **Audio** | Pin 10 | Passive Buzzer |
+| **LED Matrix Rows** | D2, D3, D4, D5 | Direct Multiplexed Output (Requires 220Ω resistors) |
+| **LED Matrix Cols** | D6, D7, D8, D9 | Column Sourcing |
+| **LCD (I2C)** | SDA (A4), SCL (A5) | Uses synchronous I2C protocol |
+| **Passive Buzzer** | D10 | PWM-driven for custom frequencies |
+| **Keypad (4x4)** | D11, D12, D13, A0, A1, A2, A3 | Matrix Scanning (Note: Pin 1 used for TX Serial) |
 
 ---
 
@@ -83,7 +82,10 @@ The spin phase utilizes a pseudo-random step generator seeded by user input timi
 
 1. **Clone the repository** and open the `.ino` file in the Arduino IDE.
 2. **Install required libraries** via the Library Manager.
-3. **Wire the components** according to the Hardware Configuration table using the appropriate jumper wires.
+3. **Wire the components** according to the Hardware Configuration table.
+* **CRITICAL:** Place a 220Ω resistor between each Row pin (D2-D5) and the Matrix pins to prevent overcurrent.
+
+
 4. **Upload the sketch** to the Arduino Uno R3.
 
 ## License
