@@ -32,6 +32,31 @@ The application is built on a state-machine architecture that manages player reg
 
 ---
 
+## Hardware Orientation & Pin Identification
+
+Because 8x8 LED matrices (like the **1088BS**) often lack standardized pin labels, use the following orientation to ensure the code's mapping logic works correctly:
+
+* **Orientation**: Position the matrix so the side with the serial number (e.g., **1088BS**) is on the **left**.
+* **Sides**: The pins on the side with the serial number are the **Left Pins**; the opposite side are the **Right Pins**.
+* **Pin Numbering**: On both sides, Pin 1 starts at the **bottom**. The pins count upward to Pin 8 at the **top**.
+
+### Matrix-to-Arduino Wiring Reference
+
+*Reference: wiring matrix_2.jpg*
+
+| Matrix Pin (Visual Identification) | Arduino Pin | Function |
+| --- | --- | --- |
+| **Left Pin 4** | **D2** | Row 1 (Resistor Required) |
+| **Right Pin 7** | **D3** | Row 2 (Resistor Required) |
+| **Left Pin 6** | **D4** | Row 3 (Resistor Required) |
+| **Right Pin 6** | **D5** | Row 4 (Resistor Required) |
+| **Left Pin 7** | **D6** | Column 1 |
+| **Left Pin 1** | **D7** | Column 2 |
+| **Right Pin 5** | **D8** | Column 3 |
+| **Left Pin 8** | **D9** | Column 4 |
+
+---
+
 ## LED Perimeter Mapping
 
 The software maps 12 specific LEDs from the matrix into a clockwise perimeter layout. The `spinFrame()` function translates logical game positions into physical matrix coordinates:
@@ -82,7 +107,7 @@ The spin phase utilizes a pseudo-random step generator seeded by user input timi
 
 1. **Clone the repository** and open the `.ino` file in the Arduino IDE.
 2. **Install required libraries** via the Library Manager.
-3. **Wire the components** according to the Hardware Configuration table.
+3. **Wire the components** according to the Hardware Configuration and Hardware Orientation tables.
 * **CRITICAL:** Place a 220Ω resistor between each Row pin (D2-D5) and the Matrix pins to prevent overcurrent.
 
 
