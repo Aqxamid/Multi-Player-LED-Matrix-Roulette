@@ -1,6 +1,6 @@
 # Multi-Player LED Matrix Roulette
 
-An system integration and architecture 2 project implementing a digital roulette game using an Arduino microcontroller. This project demonstrates direct GPIO manipulation to drive a peripheral matrix without external drivers, alongside a multi-player state-machine and custom audio feedback.
+An System Integration and Architecture 2 project implementing a digital roulette game using an Arduino microcontroller. This project demonstrates direct GPIO manipulation to drive a peripheral matrix without external drivers, alongside a multi-player state-machine and custom audio feedback.
 
 ---
 
