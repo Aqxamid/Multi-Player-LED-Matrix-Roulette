@@ -42,8 +42,6 @@ Because 8x8 LED matrices (like the **1088BS**) often lack standardized pin label
 
 ### Matrix-to-Arduino Wiring Reference
 
-*Reference: wiring matrix_2.jpg*
-
 | Matrix Pin (Visual Identification) | Arduino Pin | Function |
 | --- | --- | --- |
 | **Left Pin 4** | **D2** | Row 1 (Resistor Required) |
